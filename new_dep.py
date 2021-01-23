@@ -3,10 +3,9 @@
 import time
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
-import mariadb
-import sys
+import mysql.connector
 
-db = mariadb.connect(
+db = mysql.connector.connect(
   host="localhost",
   user="docadmin",
   passwd="12345",
