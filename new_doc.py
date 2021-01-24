@@ -22,7 +22,7 @@ try:
     results = cursor.fetchone()
 
     if results[5]==1:
-    sql_insert = "INSERT INTO st_documents  (doc_name,doc_rfid,employee_id,employee_name,sub_location,location) VALUES (%s, %s,%s,%s,%s,%S)"
+    sql_insert = "INSERT INTO st_documents  (doc_name,doc_rfid,employee_id,employee_name,sub_location,location) VALUES (%s,%s,%s,%s,%s,%s)"
     cursor.execute(sql_insert, (text,id,results[0],results[2],results[9],results[8]))
     db.commit()
     print("Success")
