@@ -23,6 +23,7 @@ try:
     if cursor.rowcount >= 1:
       cursor.execute("INSERT INTO st_documents (doc_name,doc_rfid,employee_id,employee_name,sub_location,location) VALUES (%s,%s,%s,%s,%s,%s)", (text,id,result[0],result[2],result[9],result[8]))
       db.commit()
+      print("Scanned")
     else:
       print("You are not loged in please login to the web system and scan document again to save changes")
       
