@@ -18,7 +18,7 @@ reader = SimpleMFRC522()
 try:
   while True:
     id, text = reader.read()
-    cursor.execute("SELECT * FROM st_users  WHERE user_level="+str(1))
+    cursor.execute("SELECT * FROM st_users  WHERE user_level= 1 ")
     results = cursor.fetchone()
 
     if results[5]==1:
