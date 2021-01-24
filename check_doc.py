@@ -26,7 +26,6 @@ try:
       print("Scanned")
     else:
       print("You are not loged in please login to the web system and scan document again to save changes")
-      
    time.sleep(2)
 finally:
   GPIO.cleanup()
