@@ -8,7 +8,7 @@ db = mysql.connector.connect(
   host="localhost",
   user="docadmin",
   passwd="12345",
-  database="STsystem"
+  database="stsystem"
 )
 
 cursor = db.cursor()
@@ -17,12 +17,15 @@ reader = SimpleMFRC522()
 try:
   while True:
     id, text = reader.read()
-    cursor.execute("Select id,Department_Name,Sublocation,Location FROM dep WHERE RFID="+str(id))
+    cursor.execute("SELECT * FROM st_users WHERE user_onlinest ="+str(1))
     result = cursor.fetchone()
 
     if cursor.rowcount >= 1:
-      cursor.execute("INSERT INTO docs (RFID,Department_ID,Department_Name,Employee,Sublocation,Location) VALUES (%s,%s,%s,%s,%s,%s)", (id,id,result[1],text,result[2],result[3]) )
+      cursor.execute("INSERT INTO st_documents (doc_name,doc_rfid,employee_id,employee_name,sub_location,location) VALUES (%s,%s,%s,%s,%s,%s)", (text,id,result[0],result[2],result[9],result[8]))
       db.commit()
-      time.sleep(2)
+    else:
+      print("You are not loged in please login to the web system and scan document again to save changes")
+      
+   time.sleep(2)
 finally:
   GPIO.cleanup()
